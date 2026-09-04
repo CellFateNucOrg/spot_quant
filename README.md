@@ -3,7 +3,6 @@ Quantify fluorescence within 3D or Z-projected masks.
 
 # Installation
 
-# Use
 Installation instructions are given for pixi, but you can also use conda/mamba.
 1. If you don't have pixi yet, install it from:`https://pixi.prefix.dev/latest/installation/`
 2. Navigate to where you want to place the repository.
@@ -20,6 +19,8 @@ This should print something like:
 13.0
 True # This confirms that CUDA available
 ```
+
+# Use
 
 # Output
 Measure regionprops in 3D and/or based on individually Z-projected regions. Measured properties are stored in files named "props.json" and/or "mip_props.sjon", which are structured as follows:
