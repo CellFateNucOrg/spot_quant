@@ -75,7 +75,7 @@ def get_props(regions_dict, props_c, marker_c, path, min_planes):
 
             # If there are multiple components...
             if n_components > 1:
-                # ...translate its bbox to full-image coordinates
+                # ...translate the biggest component's bbox into full-image coordinates
                 rz0, ry0, rx0, _, _, _ = region.bbox
                 cz0, cy0, cx0, cz1, cy1, cx1 = measure_region.bbox
                 bbox = (
