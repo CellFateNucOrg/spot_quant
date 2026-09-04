@@ -26,12 +26,14 @@ To do the quantification, first configure the parameters in spot_quant.sh:
 * `filter_out=()`: Expression(s) (separated by space or line) to filter out specific files. If your input directory contains files other than your raw data, make sure to use this to filter out what should not be quantified.
 * `props_c`: Which channel (starting from zero) to quantify.
 * `marker_c`: Which channel was used for the segmentation (i.e., to make the masks).
+* `masks_folder`: In which folder the masks are located, relative to the input directory containing the raw images.
 * `mask_str`: Suffix and file extension of your masks (e.g., '_mask.tif0 or '_seg.npy').
 * `do_3d`: Whether to quantify within the full 3D mask (true or false).
 * `do_mip`: Whether to quantify within a Z-projection of each mask (true or false).
 * `out_folder`: Name of a subfolder in which the output is save (optional).
 * `min_planes`: Filter used masks based on a minimum number of planes. (defaults to zero).
 * `pixi_dir`: Directory into which you cloned this repository.
+After that, run the script by typing: `sbatch spot_quant.sh`.
 
 # Output
 Measure regionprops in 3D and/or based on individually Z-projected regions. Measured properties are stored in files named "props.json" and/or "mip_props.sjon", which are structured as follows:
