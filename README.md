@@ -59,7 +59,7 @@ Measure regionprops in 3D and/or based on individually Z-projected regions. Meas
                             maximum Y coordinate (int),
                             maximum X coordinate (int)
                         ],
-                        "z_index": position of the region in the output .tif file based on wh,
+                        "z_index": position of the region in the output .tif file (after sorting all bboxes in ascending order),
                         "area": regionprops area (float),
                         "diameter": regionprops equivalent_diameter (float),
                         "solidity": solidity, measured by regionprops for 3D images or calculated manually for 2D images (float),
