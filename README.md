@@ -27,7 +27,7 @@ To do the quantification, first configure the parameters in spot_quant.sh:
 * `props_c`: Which channel (starting from zero) to quantify.
 * `marker_c`: Which channel was used for the segmentation (i.e., to make the masks).
 * `masks_folder`: In which folder the masks are located, relative to the input directory containing the raw images.
-* `mask_str`: Suffix that differentiates the mask from its corresponding image (e.g., `_mask.tif` or `_seg.npy`).
+* `mask_str`: Suffix that differentiates the mask from its corresponding image (e.g., `_mask.tif`).
 * `do_3d`: Whether to quantify within the full 3D mask (`true` or `false`).
 * `do_mip`: Whether to quantify within a Z-projection of each mask (`true` or `false`).
 * `out_folder`: Name of a subfolder in which the output is save (optional).
