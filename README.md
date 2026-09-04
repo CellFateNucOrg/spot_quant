@@ -37,7 +37,7 @@ To do the quantification, first configure the parameters in spot_quant.sh:
 Then run the script by typing: `sbatch spot_quant.sh`.
 
 # Output
-Measure regionprops in 3D and/or based on individually Z-projected regions. Measured properties are stored in files named "props.json" and/or "mip_props.sjon", which are structured as follows:
+Measure regionprops in 3D and/or based on individually Z-projected regions. Measured properties are stored in files named "props.json" and/or "mip_props.json", which are structured as follows:
 ```
 [   
     {
