@@ -85,6 +85,6 @@ Measure regionprops in 3D and/or based on individually Z-projected regions. Meas
     ...
 ]
 ```
-Put into words: the output `.json` file contains a list of objects; each object specifies filename, which channel was measured, the minimum number of planes, and a key named `"time_points"`, which has a list containing one object per time point; each such object specifies the time point and a key named `"props"`, which has a list of which each object corresponds to a label and its measurements.
+Put into words: the output `.json` file contains a list of objects; each object specifies the filename, which channel was measured, the minimum number of planes, and a key named `"time_points"`, which has a list containing one object per time point; each such object specifies the time point and a key named `"props"`, which has a list of which each object corresponds to a label and its measurements.
 
 In addition, for each image, a stack containing only the measured regions (3D and/or Z-stacked projections) is saved as a .tif file.
