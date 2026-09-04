@@ -23,15 +23,15 @@ True # This confirms that is CUDA available
 # Use
 To do the quantification, first configure the parameters in spot_quant.sh:
 * `src_dirs=()`: List of one or more directories (separated by space or line)with raw images you want to quantify.
-* `filter_out=()`: Expression(s) (separated by space or line) to filter out specific files. If your input directory contains files other than your raw data, make sure to use this option to filter out those files.
+* `filter_out=()`: Expression(s) (separated by space or line) to filter out specific files. If your input directory contains other files that should not be quantified, make sure to use this option to filter them out.
 * `props_c`: Which channel (starting from zero) to quantify.
 * `marker_c`: Which channel was used for the segmentation (i.e., to make the masks).
 * `masks_folder`: In which folder the masks are located, relative to the input directory containing the raw images.
 * `mask_str`: Suffix that differentiates the mask from its corresponding image (e.g., `_mask.tif` or `_seg.npy`).
-* `do_3d`: Whether to quantify within the full 3D mask (true or false).
-* `do_mip`: Whether to quantify within a Z-projection of each mask (true or false).
+* `do_3d`: Whether to quantify within the full 3D mask (`true` or `false`).
+* `do_mip`: Whether to quantify within a Z-projection of each mask (`true` or `false`).
 * `out_folder`: Name of a subfolder in which the output is save (optional).
-* `min_planes`: Filter used masks based on a minimum number of planes. (defaults to zero).
+* `min_planes`: Filter used masks based on a minimum number of planes. Set to zero if not specified.
 * `pixi_dir`: Directory into which you cloned this repository.
 
 Then run the script by typing: `sbatch spot_quant.sh`.
