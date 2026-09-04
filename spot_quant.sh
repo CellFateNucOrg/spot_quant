@@ -13,7 +13,7 @@
 # props_c: Which channel to quantify.
 # marker_c: Channel used for the segmentation.
 # masks_folder: Folder (relative to src_dir) containing the masks.
-# mask_str: String used to name the mask image ( extension should be .tif, .npy or .npz).
+# mask_str: String that differentiates the mask from its corresponding image (note that the file extension should be .tif, .npy or .npz).
 # do_3d: Whether to output regionprops for the full mask image.
 # do_mip: Whether to output regionprops for Z-projected masks (MIP).
 # min_planes: Minimum height (number of planes) per mask.
