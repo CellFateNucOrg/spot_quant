@@ -449,7 +449,6 @@ def main():
                 )
             })
 
-        # Add props to lists (and save a stack of the projected regions)
         if do_mip:
             props_mip.append({
                 'image': img.name,
