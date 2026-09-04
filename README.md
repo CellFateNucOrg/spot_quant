@@ -8,17 +8,6 @@ Installation instructions are given for pixi, but you can also use conda/mamba.
 2. Navigate to where you want to place the repository.
 3. Clone the repository: `git clone https://github.com/CellFateNucOrg/spot_quant/`
 4. Install the required packages: `pixi install`
-5. Confirm that CUDA is available (so you can run the pipeline with GPU support):
-```
-srun --gres gpu:1 --pty bash
-pixi run python -c "import torch; print(torch.__version__); print(torch.version.cuda); print(torch.cuda.is_available())"
-```
-This should print something like:
-```
-2.14.0+cu130
-13.0
-True # This confirms that is CUDA available
-```
 
 # Use
 To do the quantification, first configure the parameters in spot_quant.sh:
