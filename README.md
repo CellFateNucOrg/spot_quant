@@ -22,7 +22,7 @@ True # This confirms that CUDA available
 
 # Use
 To do the quantification, first configure the parameters in spot_quant.sh:
-`src_dirs()`: List of one or more directories with raw images you want to quantify.
+- `src_dirs()`: List of one or more directories with raw images you want to quantify.
 
 
 # Output
