@@ -4,9 +4,7 @@
 #SBATCH --time=0-12:00:00
 #SBATCH --cpus-per-task=64
 #SBATCH --mem 64GB
-#SBATCH --gres=gpu:rtx6000:1
-#SBATCH --mail-type=END,FAIL
-#SBATCH --mail-user=dario.bernasconi@unibe.ch
+#SBATCH --gres=gpu::1
 
 #### Config ####
 
@@ -23,9 +21,6 @@
 # pixi_dir: Directory of the pixi workspace
 
 src_dirs=(
-/Volumes/meister.data/dario/imaging/1268/20260720_e
-/Volumes/meister.data/dario/imaging/1373/20260720_e
-/Volumes/meister.data/dario/imaging/1431/20260720_e
 )
 filter_out=(faulty)
 props_c=1
