@@ -33,6 +33,7 @@ To do the quantification, first configure the parameters in spot_quant.sh:
 * `out_folder`: Name of a subfolder in which the output is save (optional).
 * `min_planes`: Filter used masks based on a minimum number of planes. (defaults to zero).
 * `pixi_dir`: Directory into which you cloned this repository.
+
 After that, run the script by typing: `sbatch spot_quant.sh`.
 
 # Output
