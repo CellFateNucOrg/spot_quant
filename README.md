@@ -32,7 +32,7 @@ To do the quantification, first configure the parameters in spot_quant.sh:
 * `do_mip`: Whether to quantify within a Z-projection of each mask (`true` or `false`).
 * `out_folder`: Name of a subfolder in which the output is save (optional).
 * `min_planes`: Filter used masks based on a minimum number of planes. Set to zero if not specified.
-* `pixi_dir`: Directory into which you cloned this repository.
+* `pixi_dir`: Path to where you created this repository (including the folder `spot_quant` itself.
 
 Then run the script by typing: `sbatch spot_quant.sh`.
 
