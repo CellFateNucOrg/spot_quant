@@ -23,7 +23,7 @@ True # This confirms that CUDA available
 # Use
 To do the quantification, first configure the parameters in spot_quant.sh:
 * `src_dirs=()`: List of one or more directories (separated by space or line)with raw images you want to quantify.
-* `filter_out=()`: Expression(s) (separated by space or line) to filter out specific files. If your input directory contains files other than your raw data, make sure to use this to filter out what should not be quantified.
+* `filter_out=()`: Expression(s) (separated by space or line) to filter out specific files. If your input directory contains files other than your raw data, make sure to use this option to filter out those files.
 * `props_c`: Which channel (starting from zero) to quantify.
 * `marker_c`: Which channel was used for the segmentation (i.e., to make the masks).
 * `masks_folder`: In which folder the masks are located, relative to the input directory containing the raw images.
