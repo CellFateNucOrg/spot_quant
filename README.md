@@ -74,6 +74,7 @@ Measured properties are stored in files named `props.json` and/or `mip_props.jso
     ...
 ]
 ```
-Put into words: the output `.json` file contains a list of objects; each object specifies the filename, which channel was measured, the minimum number of planes, and a key named `"time_points"`, which is assigned a list containing one object per time point; each such object specifies the time point and a key named `"props"`, which is assigned a list, each object of which corresponds to a label and its measurements.
+Put into words: the output `.json` file contains a list of objects; each object specifies the filename, which channel was measured, the minimum number of planes, and a key named `"time_points"`, which is assigned a list, containing one object per time point; each such object specifies the time point and a key named `"props"`, which is assigned a list of objects; each such object corresponds to a label (i.e., a a single segmentation) and its measurements.
 
-In addition, for each image, a stack containing only the measured regions (3D and/or Z-stacked projections) is saved as a .tif file.
+In addition, for each image, a stack containing only the measured regions (3D and/or Z-stacked projections) is saved as a `.tif`
+file.
