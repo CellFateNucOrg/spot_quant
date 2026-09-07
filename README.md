@@ -11,7 +11,7 @@ Installation instructions are given for pixi, but you can also use conda/mamba.
 
 # Use
 To do the quantification, first configure the parameters in spot_quant.sh:
-* `src_dirs=()`: List of one or more directories (separated by space or line)with raw images you want to quantify.
+* `src_dirs=()`: List of one or more directories (separated by space or line) with raw images you want to quantify.
 * `filter_out=()`: Expression(s) (separated by space or line) to filter out specific files. If your input directory contains other files that should not be quantified, make sure to use this option to filter them out.
 * `props_c`: Which channel (starting from zero) to quantify.
 * `marker_c`: Which channel was used for the segmentation (i.e., to make the masks).
