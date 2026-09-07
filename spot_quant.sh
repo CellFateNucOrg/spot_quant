@@ -4,7 +4,7 @@
 #SBATCH --time=0-12:00:00
 #SBATCH --cpus-per-task=64
 #SBATCH --mem 64GB
-#SBATCH --gres=gpu::1
+#SBATCH --gres=gpu:1
 
 #### Config ####
 
