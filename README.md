@@ -4,10 +4,10 @@ Quantify fluorescence within 3D or Z-projected masks.
 # Installation
 
 Installation instructions are given for pixi, but you can also use conda/mamba.
-1. If you don't have pixi yet, install it from:`https://pixi.prefix.dev/latest/installation/`
+1. If you don't have pixi yet, install it from:`https://pixi.prefix.dev/latest/installation/`.
 2. Navigate to where you want to place the repository.
-3. Clone the repository: `git clone https://github.com/CellFateNucOrg/spot_quant/`
-4. Install the required packages: `pixi install`
+3. Clone the repository: `git clone https://github.com/CellFateNucOrg/spot_quant/`.
+4. Install the required packages: `pixi install`.
 
 # Use
 To do the quantification, first configure the parameters in spot_quant.sh:
