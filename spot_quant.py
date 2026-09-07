@@ -35,7 +35,7 @@ def find_max_component(region):
 
 def get_props(regions_dict, props_c, marker_c, path, min_planes):
     """
-    Measure regionprops in 2D or 3D. Returns a list with props sorted by time pointm, and saves a stack of the measured regions.
+    Measure regionprops in 2D or 3D. Return a list with properties sorted by time point and save a stack containing only the measured regions.
     
     Args:
         regions_dict (dict of int: [RegionProperties]): Dict with time points and regionprops (per time point) as key-value pairs.
@@ -203,7 +203,7 @@ def get_props(regions_dict, props_c, marker_c, path, min_planes):
 
 def get_mip_props(regions_dict, props_c, marker_c, path, min_planes):
     """
-    Measure regionprops on Z-projected segmentations. Returns a list with props sorted by time point, and saves a stack of the projected regions.
+    Measure regionprops on Z-projected segmentations. Return a list with properties sorted by time point and save a stack of the projected regions.
      
      Args:
          regions_dict (dict of int: [RegionProperties]): Dict with time points and regionprops (per time point) as key-value pairs.
