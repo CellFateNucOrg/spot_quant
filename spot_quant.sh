@@ -18,20 +18,20 @@
 # do_mip: Whether to output regionprops for Z-projected masks (MIP).
 # min_planes: Minimum height (number of planes) per mask.
 # out_folder: Subfolder of in which to save the output.
-# pixi_dir: Directory of the pixi workspace
+# pixi_dir: Directory of the pixi workspace.
 
 src_dirs=(
 )
-filter_out=(faulty)
+filter_out=()
 props_c=1
 marker_c=0
 masks_folder=dw/masks
 mask_str='_dw_mask.tif'
-do_3d=false
+do_3d=true
 do_mip=true
 out_folder=z10
 min_planes=10
-pixi_dir=/Volumes/meister.data/dario/code/spot_quant
+pixi_dir=
 
 #### Script ####
 
