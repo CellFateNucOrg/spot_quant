@@ -1,5 +1,5 @@
 # spot_quant
-Quantification fluorescence within 3D or Z-projected masks.
+Quantification of fluorescent signals within 3D or Z-projected masks.
 
 # Installation
 
