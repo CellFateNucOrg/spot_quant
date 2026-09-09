@@ -35,7 +35,7 @@ def find_max_component(region):
 
 def get_props(regions_dict, props_c, marker_c, path, min_planes):
     """
-    Measure regionprops in 2D or 3D. Return a list with properties sorted by time point and save a stack containing only the measured regions.
+    Measure regionprops on Z-projected segmentations. Return a list with properties sorted by time point and save a stack of the projected regions.
     
     Args:
         regions_dict (dict of int: [RegionProperties]): Dict with time points and regionprops (per time point) as key-value pairs.
@@ -203,7 +203,7 @@ def get_props(regions_dict, props_c, marker_c, path, min_planes):
 
 def get_mip_props(regions_dict, props_c, marker_c, path, min_planes):
     """
-    Measure regionprops on Z-projected segmentations. Return a list with properties sorted by time point and save a stack of the projected regions.
+    Measure regionprops on Z-projected segmentations. Returns a list with props sorted by time point, and saves a stack of the projected regions.
      
      Args:
          regions_dict (dict of int: [RegionProperties]): Dict with time points and regionprops (per time point) as key-value pairs.
@@ -406,27 +406,27 @@ def main():
     props = []
     props_mip = []
 
-    for img in imgs:
-        print(f'Processing image {img.name}')
+    for img_path in imgs:
+        print(f'Processing image {img_path.name}')
 
         # Make paths for output
         path_json = out_dir / f'props.json'
-        path_tif = out_dir / f'{img.stem}_regions.tif'
+        path_tif = out_dir / f'{img_path.stem}_regions.tif'
         path_mip_json = out_dir / f'props_mip.json'
-        path_mip_tif = out_dir / f'{img.stem}_regions_max.tif'
+        path_mip_tif = out_dir / f'{img_path.stem}_regions_max.tif'
 
         # Read image & mask
-        load_img = BioImage(img)
-        mask_path = img.parent / f'{masks_folder}/{img.stem}{mask_str}'
-        load_mask = BioImage(mask_path)
+        img = BioImage(img_path)
+        mask_path = img_path.parent / f'{masks_folder}/{img_path.stem}{mask_str}'
+        mask = BioImage(mask_path)
 
         # Make a dict with props for each time point
         regions_dict = {}
-        for t in range(load_img.dims['T'][0]):
+        for t in range(img.dims['T'][0]):
             # Get image data for current time point and move the C axis to the end
-            img_data = load_img.get_image_data('TCZYX', T=t).squeeze()
+            img_data = img.get_image_data('TCZYX', T=t).squeeze()
             img_data = np.moveaxis(img_data, 0, -1)
-            mask_data = load_mask.get_image_data('TCZYX', T=t, C=0).squeeze()
+            mask_data = mask.get_image_data('TCZYX', T=t, C=0).squeeze()
 
             # Add data to the dict
             regions_dict[t] = regionprops(
@@ -437,7 +437,7 @@ def main():
         # Add props to lists (and save a stack of the measured regions)
         if do_3d:
             props.append({
-                'image': img.name,
+                'image': img_path.name,
                 'measured_channel': props_c,
                 'min_planes': min_planes,
                 'time_points': get_props(
@@ -451,7 +451,7 @@ def main():
 
         if do_mip:
             props_mip.append({
-                'image': img.name,
+                'image': img_path.name,
                 'measured_channel': props_c,
                 'min_planes': min_planes,
                 'time_points': get_mip_props(
