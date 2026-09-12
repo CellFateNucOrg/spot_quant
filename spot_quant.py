@@ -127,7 +127,7 @@ def get_props(regions_dict, props_c, marker_c, path, min_planes):
                 else:
                     solidity = measure_region.solidity
 
-                # Add props to the list for the current time_point
+                # Add props for the current time point to the list
                 t_props.append({
                     'label' : region.label,
                     'n_components': n_components,
