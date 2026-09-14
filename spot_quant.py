@@ -406,27 +406,23 @@ def main():
     # Make lists for props & add metadata
     props = [
         {
-            "metadata": [
-                {
-                    "created": datetime.now().isoformat(timespec='seconds'),
-                    'channel': props_c,
-                    'min_planes': min_planes,
-                    "depth": "3d",
+            "metadata": {
+                "created": datetime.now().isoformat(timespec='seconds'),
+                'channel': props_c,
+                'min_planes': min_planes,
+                "depth": "3d",
 
-                }
-            ]
+            }
         }
     ]
     props_mip = [
         {
-            "metadata": [
-                {
-                    "created": datetime.now().isoformat(timespec='seconds'),
-                    'channel': props_c,
-                    'min_planes': min_planes,
-                    "depth": "mip",
-                }
-            ]
+            "metadata": {
+                "created": datetime.now().isoformat(timespec='seconds'),
+                'channel': props_c,
+                'min_planes': min_planes,
+                "depth": "mip",
+            }
         }
     ]
 
