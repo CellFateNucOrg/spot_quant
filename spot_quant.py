@@ -34,14 +34,14 @@ def find_max_component(region):
         return region, n_components
 
 
-def get_props(regions_dict, props_c, marker_c, path, min_planes):
+def get_props(regions_dict, props_c, ref_c, path, min_planes):
     """
     Measure regionprops on Z-projected segmentations. Return a list with properties sorted by time point and save a stack of the projected regions.
     
     Args:
         regions_dict (dict of int: [RegionProperties]): Dict with time points and regionprops (per time point) as key-value pairs.
         props_c (int): Which channel to measure.
-        marker_c (int): Channel used for the segmentation.
+        ref_c (int): Channel used for the segmentation.
         path (str or Path): Path for output .tif file.
         min_planes (int): Minimum number of planes per mask. Smaller regions are ignored.
     """
@@ -109,7 +109,7 @@ def get_props(regions_dict, props_c, marker_c, path, min_planes):
                 # Get data for the stack & set background to zero
                 data_intensity = measure_region.image_intensity[..., props_c].copy()
                 data_intensity[~measure_region.image] = 0
-                marker_intensity = measure_region.image_intensity[..., marker_c].copy()
+                marker_intensity = measure_region.image_intensity[..., ref_c].copy()
                 marker_intensity[~measure_region.image] = 0
 
                 # Append data to stack to the dict
@@ -186,10 +186,10 @@ def get_props(regions_dict, props_c, marker_c, path, min_planes):
             data = r['data_intensity']
             stack_slice[data != 0] = data[data != 0]
 
-            # Add marker_c data
+            # Add ref_c data
             stack_slice = stack[
                 t,
-                marker_c,
+                ref_c,
                 z0 - min_z:z1 - min_z,
                 y0 - min_y:y1 - min_y,
                 x0 - min_x:x1 - min_x,
@@ -202,14 +202,14 @@ def get_props(regions_dict, props_c, marker_c, path, min_planes):
     return img_props
 
 
-def get_mip_props(regions_dict, props_c, marker_c, path, min_planes):
+def get_mip_props(regions_dict, props_c, ref_c, path, min_planes):
     """
     Measure regionprops on Z-projected segmentations. Returns a list with props sorted by time point, and saves a stack of the projected regions.
      
      Args:
          regions_dict (dict of int: [RegionProperties]): Dict with time points and regionprops (per time point) as key-value pairs.
          props_c (int): Which channel to measure.
-         marker_c (int): Channel used for the segmentation.
+         ref_c (int): Channel used for the segmentation.
          path (str or Path): Path for output .tif file.
          min_planes (int): Minimum number of planes per mask. Smaller regions are ignored.
     """
@@ -268,7 +268,7 @@ def get_mip_props(regions_dict, props_c, marker_c, path, min_planes):
                 intensity_region[~measure_region.image] = 0
                 intensity_mip = intensity_region.max(axis=0)
 
-                marker_region = measure_region.image_intensity[..., marker_c].copy()
+                marker_region = measure_region.image_intensity[..., ref_c].copy()
                 marker_region[~measure_region.image] = 0
                 marker_mip = marker_region.max(axis=0)
 
@@ -358,7 +358,7 @@ def get_mip_props(regions_dict, props_c, marker_c, path, min_planes):
             
             stack[
                 t,
-                marker_c,
+                ref_c,
                 p['z_index'],
                 y_min:y_max, 
                 x_min:x_max
@@ -374,7 +374,7 @@ def get_args():
     parser.add_argument('--src_dir', required=True, help='Folder with images to segment.')
     parser.add_argument('--filter_out', required=True, nargs='*', help='Expression(s) to filter out specific files.')
     parser.add_argument('--props_c', required=True, type=int, help='Which channel to quantify.')
-    parser.add_argument('--marker_c', required=True, type=int, help='Channel used for the segmentation.')
+    parser.add_argument('--ref_c', required=True, type=int, help='Channel used for the segmentation.')
     parser.add_argument('--masks_folder', required=True, help='Folder (relative to src_dir) containing the masks.')
     parser.add_argument('--mask_str', required=True, help='String used to name the mask image ( extension should be .tif, .npy or .npz).')
     parser.add_argument('--do_3d', required=True, help='Whether to output regionprops for the full mask image.')
@@ -388,7 +388,7 @@ def main():
     src_dir = Path(args.src_dir)
     filter_out = [e for e in args.filter_out]
     props_c = args.props_c
-    marker_c = args.marker_c
+    ref_c = args.ref_c
     masks_folder = args.masks_folder
     mask_str = args.mask_str
     do_3d = args.do_3d.lower() in ('true', 1, 'yes')
@@ -461,7 +461,7 @@ def main():
                 'time_points': get_props(
                     regions_dict=regions_dict,
                     props_c=props_c,
-                    marker_c=marker_c,
+                    ref_c=ref_c,
                     path=path_tif,
                     min_planes=min_planes
                 )
@@ -473,7 +473,7 @@ def main():
                 'time_points': get_mip_props(
                     regions_dict=regions_dict,
                     props_c=props_c,
-                    marker_c=marker_c,
+                    ref_c=ref_c,
                     path=path_mip_tif,
                     min_planes=min_planes
                 )
