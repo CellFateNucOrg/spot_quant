@@ -22,7 +22,7 @@
 
 src_dirs=(
 )
-filter_out=(faulty 10x 20x max)
+filter_out=(max)
 props_c=1
 ref_c=0
 masks_folder=dw/masks
