@@ -8,6 +8,7 @@ from skimage.measure import regionprops
 from skimage.morphology import convex_hull_image
 from scipy.ndimage import label
 import json
+from datetime import datetime
 from utils import parse_path, collect_images
 
 
@@ -403,8 +404,31 @@ def main():
     out_dir.mkdir(parents=True, exist_ok=True)
 
     # Make lists for props
-    props = []
-    props_mip = []
+    props = [
+        {
+            "metadata": [
+                {
+                    "created": datetime.now().isoformat(timespec='seconds'),
+                    'channel': props_c,
+                    'min_planes': min_planes,
+                    "depth": "3d",
+
+                }
+            ]
+        }
+    ]
+    props_mip = [
+        {
+            "metadata": [
+                {
+                    "created": datetime.now().isoformat(timespec='seconds'),
+                    'channel': props_c,
+                    'min_planes': min_planes,
+                    "depth": "mip",
+                }
+            ]
+        }
+    ]
 
     for img_path in imgs:
         print(f'Processing image {img_path.name}')
@@ -438,8 +462,6 @@ def main():
         if do_3d:
             props.append({
                 'image': img_path.name,
-                'measured_channel': props_c,
-                'min_planes': min_planes,
                 'time_points': get_props(
                     regions_dict=regions_dict,
                     props_c=props_c,
@@ -452,8 +474,6 @@ def main():
         if do_mip:
             props_mip.append({
                 'image': img_path.name,
-                'measured_channel': props_c,
-                'min_planes': min_planes,
                 'time_points': get_mip_props(
                     regions_dict=regions_dict,
                     props_c=props_c,
