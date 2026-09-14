@@ -14,7 +14,7 @@ To do the quantification, first configure the parameters in spot_quant.sh:
 * `src_dirs=()`: List of one or more directories (separated by space or line) with raw images you want to quantify.
 * `filter_out=()`: Expression(s) (separated by space or line) to filter out specific files. If your input directory contains other files that should not be quantified, make sure to use this option to filter them out.
 * `props_c`: Which channel (starting from zero) to quantify.
-* `marker_c`: Which channel was used for the segmentation (i.e., to make the masks).
+* `ref_c`: Which channel was used for the segmentation (i.e., to make the masks).
 * `masks_folder`: In which folder the masks are located, relative to the input directory containing the raw images.
 * `mask_str`: Suffix that differentiates the mask from its corresponding image (e.g., `_mask.tif`).
 * `do_3d`: Whether to quantify within the full 3D mask (`true` or `false`).
