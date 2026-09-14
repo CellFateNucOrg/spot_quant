@@ -403,7 +403,7 @@ def main():
     out_dir = src_dir / f'spot_quant/{out_folder}'
     out_dir.mkdir(parents=True, exist_ok=True)
 
-    # Make lists for props
+    # Make lists for props & add metadata
     props = [
         {
             "metadata": [
